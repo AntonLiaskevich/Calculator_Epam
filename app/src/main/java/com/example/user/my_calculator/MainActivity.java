@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnCE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 edtInput.setText(null);
             }
         });
