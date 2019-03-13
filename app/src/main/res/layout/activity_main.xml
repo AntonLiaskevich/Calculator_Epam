@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.my_calculator.MainActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+             />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <EditText
+                android:id="@+id/edtInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btnCE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ce"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/c"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Delete"
+                tools:ignore="ButtonStyle" />
+
+
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btnNumber7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_7"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_8"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_9"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumberAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/plus"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btnNumber4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_4"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_5"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_6"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumberSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/minus"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btnNumber1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_1"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_2"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumber3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_3"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumberMul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/multiply"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btnNumber0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_0"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnDot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/point"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/equly"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnNumberDiv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/devide"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>
