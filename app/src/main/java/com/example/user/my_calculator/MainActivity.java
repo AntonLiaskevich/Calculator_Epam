@@ -12,68 +12,45 @@ import static java.lang.Double.NaN;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnNumber0;
-    Button btnNumber1;
-    Button btnNumber2;
-    Button btnNumber3;
-    Button btnNumber4;
-    Button btnNumber5;
-    Button btnNumber6;
-    Button btnNumber7;
-    Button btnNumber8;
-    Button btnNumber9;
+    private TextView txtResult;
 
-    TextView txtResult;
+    private EditText edtInput;
 
-    EditText edtInput;
-
-    Button btnCE;
-    Button btnC;
-    Button btnDelete;
-
-    Button btnAdd;
-    Button btnSub;
-    Button btnMul;
-    Button btnDiv;
-
-    Button btnDot;
-    Button btnResult;
-
-    double val1=NaN;
-    double val2;
-    String ACTION;
+    private double val1=NaN;
+    private double val2;
+    private String ACTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnNumber0 = findViewById(R.id.btnNumber0);
-        btnNumber1 = findViewById(R.id.btnNumber1);
-        btnNumber2 = findViewById(R.id.btnNumber2);
-        btnNumber3 = findViewById(R.id.btnNumber3);
-        btnNumber4 = findViewById(R.id.btnNumber4);
-        btnNumber5 = findViewById(R.id.btnNumber5);
-        btnNumber6 = findViewById(R.id.btnNumber6);
-        btnNumber7 = findViewById(R.id.btnNumber7);
-        btnNumber8 = findViewById(R.id.btnNumber8);
-        btnNumber9 = findViewById(R.id.btnNumber9);
+        Button btnNumber0 = findViewById(R.id.btnNumber0);
+        Button btnNumber1 = findViewById(R.id.btnNumber1);
+        Button btnNumber2 = findViewById(R.id.btnNumber2);
+        Button btnNumber3 = findViewById(R.id.btnNumber3);
+        Button btnNumber4 = findViewById(R.id.btnNumber4);
+        Button btnNumber5 = findViewById(R.id.btnNumber5);
+        Button btnNumber6 = findViewById(R.id.btnNumber6);
+        Button btnNumber7 = findViewById(R.id.btnNumber7);
+        Button btnNumber8 = findViewById(R.id.btnNumber8);
+        Button btnNumber9 = findViewById(R.id.btnNumber9);
 
         txtResult = findViewById(R.id.txtResult);
 
         edtInput = findViewById(R.id.edtInput);
 
-        btnCE = findViewById(R.id.btnCE);
-        btnC = findViewById(R.id.btnC);
-        btnDelete = findViewById(R.id.btnDelete);
+        Button btnCE = findViewById(R.id.btnCE);
+        Button btnC = findViewById(R.id.btnC);
+        Button btnDelete = findViewById(R.id.btnDelete);
 
-        btnAdd = findViewById(R.id.btnNumberAdd);
-        btnSub = findViewById(R.id.btnNumberSub);
-        btnMul = findViewById(R.id.btnNumberMul);
-        btnDiv = findViewById(R.id.btnNumberDiv);
+        Button btnAdd = findViewById(R.id.btnNumberAdd);
+        Button btnSub = findViewById(R.id.btnNumberSub);
+        Button btnMul = findViewById(R.id.btnNumberMul);
+        Button btnDiv = findViewById(R.id.btnNumberDiv);
 
-        btnDot = findViewById(R.id.btnDot);
-        btnResult = findViewById(R.id.btnResult);
+        Button btnDot = findViewById(R.id.btnDot);
+        Button btnResult = findViewById(R.id.btnResult);
 
         btnCE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,6 +273,5 @@ public class MainActivity extends AppCompatActivity {
                 edtInput.setSelection(edtInput.getText().length());
             }
         });
-
     }
 }

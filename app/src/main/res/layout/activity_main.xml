@@ -16,28 +16,23 @@
             <TextView
                 android:id="@+id/txtResult"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-             />
-
+                android:layout_height="wrap_content"/>
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edtInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnCE"
@@ -59,13 +54,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Delete"
                 tools:ignore="ButtonStyle" />
-
-
         </TableRow>
+
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnNumber7"
@@ -94,13 +87,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/plus"
                 tools:ignore="ButtonStyle" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnNumber4"
@@ -129,13 +120,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/minus"
                 tools:ignore="ButtonStyle" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnNumber1"
@@ -164,13 +153,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/multiply"
                 tools:ignore="ButtonStyle" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnNumber0"
@@ -199,8 +186,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/devide"
                 tools:ignore="ButtonStyle" />
-
         </TableRow>
-
     </TableLayout>
 </android.support.constraint.ConstraintLayout>
