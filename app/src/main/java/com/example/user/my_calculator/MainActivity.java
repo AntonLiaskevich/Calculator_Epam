@@ -1,8 +1,8 @@
 package com.example.user.my_calculator;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,266 +13,131 @@ import static java.lang.Double.NaN;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txtResult;
-
     private EditText edtInput;
 
-    private double val1=NaN;
-    private double val2;
-    private String ACTION;
+    private double firstNumber = NaN;
+    private double secondNumber;
+    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnNumber0 = findViewById(R.id.btnNumber0);
-        Button btnNumber1 = findViewById(R.id.btnNumber1);
-        Button btnNumber2 = findViewById(R.id.btnNumber2);
-        Button btnNumber3 = findViewById(R.id.btnNumber3);
-        Button btnNumber4 = findViewById(R.id.btnNumber4);
-        Button btnNumber5 = findViewById(R.id.btnNumber5);
-        Button btnNumber6 = findViewById(R.id.btnNumber6);
-        Button btnNumber7 = findViewById(R.id.btnNumber7);
-        Button btnNumber8 = findViewById(R.id.btnNumber8);
-        Button btnNumber9 = findViewById(R.id.btnNumber9);
-
         txtResult = findViewById(R.id.txtResult);
-
         edtInput = findViewById(R.id.edtInput);
+    }
 
-        Button btnCE = findViewById(R.id.btnCE);
-        Button btnC = findViewById(R.id.btnC);
-        Button btnDelete = findViewById(R.id.btnDelete);
+    public void onCEClick(View view) {
+        edtInput.setText(null);
+    }
 
-        Button btnAdd = findViewById(R.id.btnNumberAdd);
-        Button btnSub = findViewById(R.id.btnNumberSub);
-        Button btnMul = findViewById(R.id.btnNumberMul);
-        Button btnDiv = findViewById(R.id.btnNumberDiv);
+    public void onCClick(View view) {
+        firstNumber = NaN;
+        txtResult.setText(null);
+        edtInput.setText(null);
+    }
 
-        Button btnDot = findViewById(R.id.btnDot);
-        Button btnResult = findViewById(R.id.btnResult);
+    public void onDelClick(View view) {
+        String number = edtInput.getText().toString();
+        if (number.length() > 0) {
+            number = number.substring(0, number.length() - 1);
+        }
+        edtInput.setText(number);
+        edtInput.setSelection(edtInput.getText().length());
+    }
 
-        btnCE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @SuppressLint("SetTextI18n")
+    public void onDigitClick(View view) {
+        Button digit = (Button) view;
 
-                edtInput.setText(null);
-            }
-        });
+        edtInput.setText(edtInput.getText() + digit.getText().toString());
+        edtInput.setSelection(edtInput.getText().length());
+    }
 
-        btnC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                val1 = NaN;
-                txtResult.setText(null);
-                edtInput.setText(null);
-            }
-        });
+    @SuppressLint("SetTextI18n")
+    public void onAddClick(View view) {
+        action = "+";
+        if (!Double.isNaN(firstNumber)) {
+            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = firstNumber + secondNumber;
+        } else {
+            firstNumber = Double.parseDouble(edtInput.getText().toString());
+        }
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String number = edtInput.getText().toString();
-                if(number.length() > 0){
-                    number = number.substring(0, number.length() - 1);
-                }
-                edtInput.setText(number);
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
+        txtResult.setText(firstNumber + " + ");
+        edtInput.setText(null);
+    }
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                ACTION = "+";
-                if(!Double.isNaN(val1)){
-                    val2 = Double.parseDouble(edtInput.getText().toString());
-                    val1 = val1 + val2;
-                } else {
-                    val1 = Double.parseDouble(edtInput.getText().toString());
-                }
+    @SuppressLint("SetTextI18n")
+    public void onSubClick(View view) {
+        action = "-";
+        if (!Double.isNaN(firstNumber)) {
+            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = firstNumber - secondNumber;
+        } else {
+            firstNumber = Double.parseDouble(edtInput.getText().toString());
+        }
 
-                txtResult.setText(val1 + " + ");
-                edtInput.setText(null);
-            }
-        });
+        txtResult.setText(firstNumber + " - ");
+        edtInput.setText(null);
+    }
 
-        btnSub.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                ACTION = "-";
-                if(!Double.isNaN(val1)){
-                    val2 = Double.parseDouble(edtInput.getText().toString());
-                    val1 = val1 - val2;
-                } else {
-                    val1 = Double.parseDouble(edtInput.getText().toString());
-                }
+    @SuppressLint("SetTextI18n")
+    public void onMulClick(View view) {
+        action = "*";
+        if (!Double.isNaN(firstNumber)) {
+            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = firstNumber * secondNumber;
+        } else {
+            firstNumber = Double.parseDouble(edtInput.getText().toString());
+        }
 
-                txtResult.setText(val1 + " - ");
-                edtInput.setText(null);
-            }
-        });
+        txtResult.setText(firstNumber + " * ");
+        edtInput.setText(null);
+    }
 
-        btnMul.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                ACTION = "*";
-                if(!Double.isNaN(val1)){
-                    val2 = Double.parseDouble(edtInput.getText().toString());
-                    val1 = val1 * val2;
-                } else {
-                    val1 = Double.parseDouble(edtInput.getText().toString());
-                }
+    @SuppressLint("SetTextI18n")
+    public void onDotClick(View view) {
+        edtInput.setText(edtInput.getText() + ".");
+        edtInput.setSelection(edtInput.getText().length());
+    }
 
-                txtResult.setText(val1 + " * ");
-                edtInput.setText(null);
-            }
-        });
+    @SuppressLint("SetTextI18n")
+    public void onDivClick(View view) {
+        action = "/";
+        if (!Double.isNaN(firstNumber)) {
+            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = firstNumber / secondNumber;
+        } else {
+            firstNumber = Double.parseDouble(edtInput.getText().toString());
+        }
 
-        btnDiv.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                ACTION = "/";
-                if(!Double.isNaN(val1)){
-                    val2 = Double.parseDouble(edtInput.getText().toString());
-                    val1 = val1/val2;
-                } else {
-                    val1 = Double.parseDouble(edtInput.getText().toString());
-                }
+        txtResult.setText(firstNumber + " / ");
+        edtInput.setText(null);
+    }
 
-                txtResult.setText(val1 + " / ");
-                edtInput.setText(null);
-            }
-        });
+    public void onResultClick(View view) {
+        if (action != null && action.equals("+")) {
+            double result = firstNumber + Double.parseDouble(edtInput.getText().toString());
+            txtResult.setText(null);
+            edtInput.setText(String.valueOf(result));
+        } else if (action != null && action.equals("-")) {
+            double result = firstNumber - Double.parseDouble(edtInput.getText().toString());
+            txtResult.setText(null);
+            edtInput.setText(String.valueOf(result));
+        } else if (action != null && action.equals("*")) {
+            double result = firstNumber * Double.parseDouble(edtInput.getText().toString());
+            txtResult.setText(null);
+            edtInput.setText(String.valueOf(result));
+        } else if (action != null && action.equals("/")) {
+            double result = firstNumber / Double.parseDouble(edtInput.getText().toString());
+            txtResult.setText(null);
+            edtInput.setText(String.valueOf(result));
+        }
 
-        btnResult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ACTION != null && ACTION.equals("+")){
-                    double result = val1 + Double.parseDouble(edtInput.getText().toString());
-                    txtResult.setText(null);
-                    edtInput.setText(String.valueOf(result));
-                } else if(ACTION != null && ACTION.equals("-")){
-                    double result = val1 - Double.parseDouble(edtInput.getText().toString());
-                    txtResult.setText(null);
-                    edtInput.setText(String.valueOf(result));
-                } else if(ACTION != null && ACTION.equals("*")){
-                    double result = val1 * Double.parseDouble(edtInput.getText().toString());
-                    txtResult.setText(null);
-                    edtInput.setText(String.valueOf(result));
-                } else if(ACTION != null && ACTION.equals("/")){
-                    double result = val1 / Double.parseDouble(edtInput.getText().toString());
-                    txtResult.setText(null);
-                    edtInput.setText(String.valueOf(result));
-                }
-
-                ACTION = null;
-                val1 = NaN;
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber0.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "0");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber1.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "1");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber2.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "2");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber3.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "3");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber4.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "4");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber5.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "5");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber6.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "6");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber7.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "7");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber8.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "8");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnNumber9.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + "9");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
-
-        btnDot.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                edtInput.setText(edtInput.getText() + ".");
-                edtInput.setSelection(edtInput.getText().length());
-            }
-        });
+        action = null;
+        firstNumber = NaN;
+        edtInput.setSelection(edtInput.getText().length());
     }
 }

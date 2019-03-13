@@ -27,7 +27,8 @@
                 android:id="@+id/edtInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                tools:ignore="Autofill,LabelFor" />
         </TableRow>
 
         <TableRow
@@ -39,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ce"
+                android:onClick="onCEClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -46,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/c"
+                android:onClick="onCClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -53,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Delete"
+                android:onClick="onDelClick"
                 tools:ignore="ButtonStyle" />
         </TableRow>
 
@@ -65,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_7"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -72,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_8"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -79,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_9"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -86,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/plus"
+                android:onClick="onAddClick"
                 tools:ignore="ButtonStyle" />
         </TableRow>
 
@@ -98,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_4"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -105,6 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_5"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -112,6 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_6"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -119,6 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/minus"
+                android:onClick="onSubClick"
                 tools:ignore="ButtonStyle" />
         </TableRow>
 
@@ -131,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_1"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -138,6 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_2"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -145,6 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_3"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -152,6 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/multiply"
+                android:onClick="onMulClick"
                 tools:ignore="ButtonStyle" />
         </TableRow>
 
@@ -164,6 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/_0"
+                android:onClick="onDigitClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -171,6 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/point"
+                android:onClick="onDotClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -178,6 +196,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/equly"
+                android:onClick="onResultClick"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -185,6 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/devide"
+                android:onClick="onDivClick"
                 tools:ignore="ButtonStyle" />
         </TableRow>
     </TableLayout>
