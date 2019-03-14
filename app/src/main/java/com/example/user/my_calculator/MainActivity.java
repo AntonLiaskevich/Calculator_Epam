@@ -12,8 +12,8 @@ import static java.lang.Double.NaN;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtResult;
-    private EditText edtInput;
+    private TextView resultOfOperation;
+    private EditText numberInput;
 
     private double firstNumber = NaN;
     private double secondNumber;
@@ -24,120 +24,114 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtResult = findViewById(R.id.txtResult);
-        edtInput = findViewById(R.id.edtInput);
+        resultOfOperation = findViewById(R.id.resultOfOperation);
+        numberInput = findViewById(R.id.numberInput);
     }
 
     public void onCEClick(View view) {
-        edtInput.setText(null);
+        numberInput.setText(null);
     }
 
     public void onCClick(View view) {
         firstNumber = NaN;
-        txtResult.setText(null);
-        edtInput.setText(null);
+        resultOfOperation.setText(null);
+        numberInput.setText(null);
     }
 
     public void onDelClick(View view) {
-        String number = edtInput.getText().toString();
+        String number = numberInput.getText().toString();
         if (number.length() > 0) {
             number = number.substring(0, number.length() - 1);
         }
-        edtInput.setText(number);
-        edtInput.setSelection(edtInput.getText().length());
+        numberInput.setText(number);
+        numberInput.setSelection(numberInput.getText().length());
     }
 
-    @SuppressLint("SetTextI18n")
     public void onDigitClick(View view) {
         Button digit = (Button) view;
 
-        edtInput.setText(edtInput.getText() + digit.getText().toString());
-        edtInput.setSelection(edtInput.getText().length());
+        numberInput.setText(numberInput.getText() + digit.getText().toString());
+        numberInput.setSelection(numberInput.getText().length());
     }
 
-    @SuppressLint("SetTextI18n")
     public void onAddClick(View view) {
         action = "+";
         if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            secondNumber = Double.parseDouble(numberInput.getText().toString());
             firstNumber = firstNumber + secondNumber;
         } else {
-            firstNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = Double.parseDouble(numberInput.getText().toString());
         }
 
-        txtResult.setText(firstNumber + " + ");
-        edtInput.setText(null);
+        resultOfOperation.setText(firstNumber + " + ");
+        numberInput.setText(null);
     }
 
-    @SuppressLint("SetTextI18n")
     public void onSubClick(View view) {
         action = "-";
         if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            secondNumber = Double.parseDouble(numberInput.getText().toString());
             firstNumber = firstNumber - secondNumber;
         } else {
-            firstNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = Double.parseDouble(numberInput.getText().toString());
         }
 
-        txtResult.setText(firstNumber + " - ");
-        edtInput.setText(null);
+        resultOfOperation.setText(firstNumber + " - ");
+        numberInput.setText(null);
     }
 
-    @SuppressLint("SetTextI18n")
     public void onMulClick(View view) {
         action = "*";
         if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            secondNumber = Double.parseDouble(numberInput.getText().toString());
             firstNumber = firstNumber * secondNumber;
         } else {
-            firstNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = Double.parseDouble(numberInput.getText().toString());
         }
 
-        txtResult.setText(firstNumber + " * ");
-        edtInput.setText(null);
+        resultOfOperation.setText(firstNumber + " * ");
+        numberInput.setText(null);
     }
 
-    @SuppressLint("SetTextI18n")
     public void onDotClick(View view) {
-        edtInput.setText(edtInput.getText() + ".");
-        edtInput.setSelection(edtInput.getText().length());
+        numberInput.setText(numberInput.getText() + ".");
+        numberInput.setSelection(numberInput.getText().length());
     }
 
-    @SuppressLint("SetTextI18n")
     public void onDivClick(View view) {
         action = "/";
         if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(edtInput.getText().toString());
+            secondNumber = Double.parseDouble(numberInput.getText().toString());
             firstNumber = firstNumber / secondNumber;
         } else {
-            firstNumber = Double.parseDouble(edtInput.getText().toString());
+            firstNumber = Double.parseDouble(numberInput.getText().toString());
         }
 
-        txtResult.setText(firstNumber + " / ");
-        edtInput.setText(null);
+        resultOfOperation.setText(firstNumber + " / ");
+        numberInput.setText(null);
     }
 
     public void onResultClick(View view) {
         if (action != null && action.equals("+")) {
-            double result = firstNumber + Double.parseDouble(edtInput.getText().toString());
-            txtResult.setText(null);
-            edtInput.setText(String.valueOf(result));
+            double result = firstNumber + Double.parseDouble(numberInput.getText().toString());
+            resultOfOperation.setText(null);
+            numberInput.setText(String.valueOf(result));
         } else if (action != null && action.equals("-")) {
-            double result = firstNumber - Double.parseDouble(edtInput.getText().toString());
-            txtResult.setText(null);
-            edtInput.setText(String.valueOf(result));
+            double result = firstNumber - Double.parseDouble(numberInput.getText().toString());
+            resultOfOperation.setText(null);
+            numberInput.setText(String.valueOf(result));
         } else if (action != null && action.equals("*")) {
-            double result = firstNumber * Double.parseDouble(edtInput.getText().toString());
-            txtResult.setText(null);
-            edtInput.setText(String.valueOf(result));
+            double result = firstNumber * Double.parseDouble(numberInput.getText().toString());
+            resultOfOperation.setText(null);
+            numberInput.setText(String.valueOf(result));
         } else if (action != null && action.equals("/")) {
-            double result = firstNumber / Double.parseDouble(edtInput.getText().toString());
-            txtResult.setText(null);
-            edtInput.setText(String.valueOf(result));
+            double result = firstNumber / Double.parseDouble(numberInput.getText().toString());
+            resultOfOperation.setText(null);
+            numberInput.setText(String.valueOf(result));
         }
 
         action = null;
         firstNumber = NaN;
-        edtInput.setSelection(edtInput.getText().length());
+        numberInput.setSelection(numberInput.getText().length());
     }
 }
