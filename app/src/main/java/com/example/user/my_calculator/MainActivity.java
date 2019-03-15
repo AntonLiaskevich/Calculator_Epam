@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultOfOperation;
     private EditText numberInput;
 
-    private int action;
+    private int mathematicalAction;
     private double firstNumber = 0;
     private boolean isFirstNumber = true;
     private boolean doesFirstNumberContainEqully = true;
@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) view;
 
         if(isFirstNumber) {
-            action = button.getId();
+            mathematicalAction = button.getId();
             isFirstNumber = false;
             if (!Double.isNaN(firstNumber)) {
-                switch (action) {
+                switch (mathematicalAction) {
                     case R.id.buttonPlus:
                         firstNumber = firstNumber + Double.parseDouble(numberInput.getText().toString());
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isFirstNumber & doesFirstNumberContainEqully) {
             doesFirstNumberContainEqully = false;
-            switch (action){
+            switch (mathematicalAction){
                 case R.id.buttonPlus:
                     double result = firstNumber + Double.parseDouble(numberInput.getText().toString());
                     resultOfOperation.setText(null);
