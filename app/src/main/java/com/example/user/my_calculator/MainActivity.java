@@ -1,6 +1,5 @@
 package com.example.user.my_calculator;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultOfOperation;
     private EditText numberInput;
 
+    private int action;
     private double firstNumber = 0;
-    private double secondNumber;
-    private String action;
     private boolean isFirstNumber = true;
+    private boolean doesFirstNumberContainEqully = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,89 +53,84 @@ public class MainActivity extends AppCompatActivity {
         numberInput.setText(numberInput.getText() + digit.getText().toString());
         numberInput.setSelection(numberInput.getText().length());
         isFirstNumber = true;
+        doesFirstNumberContainEqully = true;
     }
 
-    public void onAddClick(View view) {
-        if(isFirstNumber) {
+    public void onDotClick(View view) {
+        if(!(numberInput.getText().toString().contains(".")) & isFirstNumber) {
             isFirstNumber = false;
-            action = "+";
+            numberInput.setText(numberInput.getText() + ".");
+            numberInput.setSelection(numberInput.getText().length());
+        }
+    }
+
+    public void onMathematicalSignClick(View view) {
+        Button button = (Button) view;
+
+        if(isFirstNumber) {
+            action = button.getId();
+            isFirstNumber = false;
             if (!Double.isNaN(firstNumber)) {
-                /*secondNumber = Double.parseDouble(numberInput.getText().toString());*/
-                firstNumber = firstNumber + Double.parseDouble(numberInput.getText().toString());
+                switch (action) {
+                    case R.id.buttonPlus:
+                        firstNumber = firstNumber + Double.parseDouble(numberInput.getText().toString());
+
+                        break;
+                    case R.id.buttonMinus:
+                        firstNumber = firstNumber - Double.parseDouble(numberInput.getText().toString());
+
+                        break;
+                    case R.id.buttonMultiplication:
+                        firstNumber = firstNumber * Double.parseDouble(numberInput.getText().toString());
+
+                        break;
+                    case R.id.buttonDivision:
+                        firstNumber = firstNumber / Double.parseDouble(numberInput.getText().toString());
+
+                        break;
+                }
             } else {
                 firstNumber = Double.parseDouble(numberInput.getText().toString());
             }
 
-            resultOfOperation.setText(firstNumber + " + ");
+            resultOfOperation.setText(firstNumber + button.getText().toString());
             numberInput.setText(null);
         }
     }
 
-    public void onSubClick(View view) {
-        action = "-";
-        if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(numberInput.getText().toString());
-            firstNumber = firstNumber - secondNumber;
-        } else {
-            firstNumber = Double.parseDouble(numberInput.getText().toString());
-        }
-
-        resultOfOperation.setText(firstNumber + " - ");
-        numberInput.setText(null);
-    }
-
-    public void onMulClick(View view) {
-        action = "*";
-        if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(numberInput.getText().toString());
-            firstNumber = firstNumber * secondNumber;
-        } else {
-            firstNumber = Double.parseDouble(numberInput.getText().toString());
-        }
-
-        resultOfOperation.setText(firstNumber + " * ");
-        numberInput.setText(null);
-    }
-
-    public void onDotClick(View view) {
-        numberInput.setText(numberInput.getText() + ".");
-        numberInput.setSelection(numberInput.getText().length());
-    }
-
-    public void onDivClick(View view) {
-        action = "/";
-        if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(numberInput.getText().toString());
-            firstNumber = firstNumber / secondNumber;
-        } else {
-            firstNumber = Double.parseDouble(numberInput.getText().toString());
-        }
-
-        resultOfOperation.setText(firstNumber + " / ");
-        numberInput.setText(null);
-    }
-
     public void onResultClick(View view) {
-        if (action != null && action.equals("+")) {
-            double result = firstNumber + Double.parseDouble(numberInput.getText().toString());
-            resultOfOperation.setText(null);
-            numberInput.setText(String.valueOf(result));
-        } else if (action != null && action.equals("-")) {
-            double result = firstNumber - Double.parseDouble(numberInput.getText().toString());
-            resultOfOperation.setText(null);
-            numberInput.setText(String.valueOf(result));
-        } else if (action != null && action.equals("*")) {
-            double result = firstNumber * Double.parseDouble(numberInput.getText().toString());
-            resultOfOperation.setText(null);
-            numberInput.setText(String.valueOf(result));
-        } else if (action != null && action.equals("/")) {
-            double result = firstNumber / Double.parseDouble(numberInput.getText().toString());
-            resultOfOperation.setText(null);
-            numberInput.setText(String.valueOf(result));
-        }
 
-        action = null;
-        firstNumber = NaN;
-        numberInput.setSelection(numberInput.getText().length());
+        if(isFirstNumber & doesFirstNumberContainEqully) {
+            doesFirstNumberContainEqully = false;
+            switch (action){
+                case R.id.buttonPlus:
+                    double result = firstNumber + Double.parseDouble(numberInput.getText().toString());
+                    resultOfOperation.setText(null);
+                    numberInput.setText(String.valueOf(result));
+
+                    break;
+                case R.id.buttonMinus:
+                    result = firstNumber - Double.parseDouble(numberInput.getText().toString());
+                    resultOfOperation.setText(null);
+                    numberInput.setText(String.valueOf(result));
+
+                    break;
+                case R.id.buttonMultiplication:
+                    result = firstNumber * Double.parseDouble(numberInput.getText().toString());
+                    resultOfOperation.setText(null);
+                    numberInput.setText(String.valueOf(result));
+
+                    break;
+                case R.id.buttonDivision:
+                    result = firstNumber / Double.parseDouble(numberInput.getText().toString());
+                    resultOfOperation.setText(null);
+                    numberInput.setText(String.valueOf(result));
+
+                    break;
+            }
+
+            firstNumber = NaN;
+            numberInput.setSelection(numberInput.getText().length());
+        }
     }
 }
