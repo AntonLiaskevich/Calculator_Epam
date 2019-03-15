@@ -15,9 +15,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultOfOperation;
     private EditText numberInput;
 
-    private double firstNumber = NaN;
+    private double firstNumber = 0;
     private double secondNumber;
     private String action;
+    private boolean isFirstNumber = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +53,23 @@ public class MainActivity extends AppCompatActivity {
 
         numberInput.setText(numberInput.getText() + digit.getText().toString());
         numberInput.setSelection(numberInput.getText().length());
+        isFirstNumber = true;
     }
 
     public void onAddClick(View view) {
-        action = "+";
-        if (!Double.isNaN(firstNumber)) {
-            secondNumber = Double.parseDouble(numberInput.getText().toString());
-            firstNumber = firstNumber + secondNumber;
-        } else {
-            firstNumber = Double.parseDouble(numberInput.getText().toString());
-        }
+        if(isFirstNumber) {
+            isFirstNumber = false;
+            action = "+";
+            if (!Double.isNaN(firstNumber)) {
+                /*secondNumber = Double.parseDouble(numberInput.getText().toString());*/
+                firstNumber = firstNumber + Double.parseDouble(numberInput.getText().toString());
+            } else {
+                firstNumber = Double.parseDouble(numberInput.getText().toString());
+            }
 
-        resultOfOperation.setText(firstNumber + " + ");
-        numberInput.setText(null);
+            resultOfOperation.setText(firstNumber + " + ");
+            numberInput.setText(null);
+        }
     }
 
     public void onSubClick(View view) {
